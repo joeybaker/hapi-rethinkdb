@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.2 | 2015-06-04
+* Revert "Change license to Artistic-2.0"
+* docs: fix badge urls
+
 ## v3.0.1 | 2015-06-03
 * fix: license field
 
@@ -14,5 +18,6 @@
 
 ### 2.0.0
 Preceding fork.
+
 
 
