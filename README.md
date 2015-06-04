@@ -109,8 +109,8 @@ Artistic 2.0 © [Joey Baker](http://byjoeybaker.com) A copy of the license can b
 
 
 [npm-url]: https://npmjs.org/package/@joeybaker/hapi-rethinkdb
-[npm-image]: https://badge.fury.io/js/@joeybaker/hapi-rethinkdb.svg
-[travis-url]: https://travis-ci.org/joeybaker/@joeybaker/hapi-rethinkdb
-[travis-image]: https://travis-ci.org/joeybaker/@joeybaker/hapi-rethinkdb.svg?branch=master
-[daviddm-url]: https://david-dm.org/joeybaker/@joeybaker/hapi-rethinkdb.svg?theme=shields.io
-[daviddm-image]: https://david-dm.org/joeybaker/@joeybaker/hapi-rethinkdb
+[npm-image]: https://badge.fury.io/js/%40joeybaker%2Fhapi-rethinkdb.svg
+[travis-url]: https://travis-ci.org/joeybaker/hapi-rethinkdb
+[travis-image]: https://travis-ci.org/joeybaker/hapi-rethinkdb.svg?branch=master
+[daviddm-url]: https://david-dm.org/joeybaker/hapi-rethinkdb.svg?theme=shields.io
+[daviddm-image]: https://david-dm.org/joeybaker/hapi-rethinkdb
