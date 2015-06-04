@@ -105,7 +105,7 @@ _NOTE: you might need to `sudo ln -s /usr/local/bin/node /usr/bin/node` to ensur
 
 ## License
 
-Artistic 2.0 © [Joey Baker](http://byjoeybaker.com) A copy of the license can be found in the file `LICENSE`.
+ISC © [Jose Luis Rivas](http://ghostbar.co) and [Joey Baker](http://byjoeybaker.com). A copy of the license can be found in the file `LICENSE`.
 
 
 [npm-url]: https://npmjs.org/package/@joeybaker/hapi-rethinkdb
