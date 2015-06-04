@@ -9,7 +9,7 @@
     "url": "http://byjoeybaker.com"
   },
   "repository": "joeybaker/hapi-rethinkdb",
-  "license": "Artistic 2.0",
+  "license": "Artistic-2.0",
   "directories": {
     "test": "test"
   },
