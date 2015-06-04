@@ -1,6 +1,6 @@
 # hapi-rethinkdb [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Build Status][travis-image]][travis-url]
 
-Hapi (^8.0) plugin for rethinkdb native driver
+Hapi (^8.0) plugin for rethinkdb native driver. This is a fork of @ghostbar's version that adds rethinkdb-init.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -36,7 +36,13 @@ const server = new Hapi.Server()
 
 server.register({
   register: hapiRethinkdb
-  , options: {url: 'rethinkdb://:password@domain.tld:port/dbname'}
+  , options: {
+    url: 'rethinkdb://:password@domain.tld:port/dbname'
+    table: {
+      name: 'example'
+      , indexes: 'name'
+    }
+  }
 })
 ```
 
@@ -54,6 +60,26 @@ function handler (request, response) {
   })
 }
 ```
+
+## Options
+
+### `<String>` url **Required if `host` and `port` not set**
+Convenience method to set the rethinkdb connection. Takes the format: `rethinkdb://:password@host:port/dbname`
+
+### `<String>` host **Required if `url` set**
+The rethinkdb host. Defaults to `127.0.0.1`
+
+### `<Number>` port **Required if `url` set**
+The rethinkdb port. Defaults to `28015`
+
+### `<String>` db
+The db to use. If it doesn't exist, it will be created for you.
+
+### `<String>` auth
+The rethinkdb auth key.
+
+### `<String or Object>` table OR `<Array>` tables
+Ensure tables and indexes exist. For full configuration see: [`rethinkdb-init`](https://github.com/thejsj/rethinkdb-init)
 
 ## Tests
 Tests are in [tape](https://github.com/substack/tape).
