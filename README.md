@@ -4,12 +4,19 @@ Hapi (^8.0) plugin for rethinkdb native driver. This is a fork of @ghostbar's ve
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Install](#install)
 - [Usage](#usage)
-- [Methods](#methods)
-- [Events](#events)
+  - [Registration](#registration)
+  - [Access](#access)
+- [Options](#options)
+  - [`<String>` url **Required if `host` and `port` not set**](#string-url-required-if-host-and-port-not-set)
+  - [`<String>` host **Required if `url` set**](#string-host-required-if-url-set)
+  - [`<Number>` port **Required if `url` set**](#number-port-required-if-url-set)
+  - [`<String>` db](#string-db)
+  - [`<String>` auth](#string-auth)
+  - [`<String or Object>` table OR `<Array>` tables](#string-or-object-table-or-array-tables)
 - [Tests](#tests)
 - [Developing](#developing)
   - [Requirements](#requirements)
