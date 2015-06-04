@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0",
+  "version": "3.0.1",
   "name": "@joeybaker/hapi-rethinkdb",
   "description": "Hapi (^8.0) plugin for rethinkdb native driver",
   "author": "Jose-Luis Rivas <me@ghostbar.co>",
