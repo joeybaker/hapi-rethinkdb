@@ -1,42 +1,45 @@
-'use strict';
+import r from 'rethinkdb'
+import rethinkdbInit from 'rethinkdb-init'
+import pkg from './package.json'
 
-var rethink = require('rethinkdb');
+const pluginName = 'rethinkdb'
 
-exports.register = function (plugin, opts, next) {
-  opts = opts || {};
+exports.register = function registerRethinkdb (plugin, opts = {}, next) {
+  const options = {}
+
   if (!opts.url) {
-    opts.port = opts.port || 28015;
-    opts.host = opts.host || 'localhost';
-    opts.db = opts.db || 'test';
-  } else {
-    var url = require('url').parse(opts.url);
-    opts.port = parseInt(url.port) || 28015;
-    opts.host = url.hostname || 'localhost';
-    opts.db = url.pathname ? url.pathname.replace(/^\//, '') : 'test';
+    options.port = opts.port || 28015
+    options.host = opts.host || '127.0.0.1'
+    options.db = opts.db || 'test'
+  }
+  else {
+    const url = require('url').parse(opts.url)
+    options.port = parseInt(url.port, 10) || 28015
+    options.host = url.hostname || '127.0.0.1'
+    options.db = url.pathname ? url.pathname.replace(/^\//, '') : 'test'
 
-    if (url.auth)
-      opts.authKey = url.auth.split(':')[1];
+    if (url.auth) options.authKey = url.auth.split(':')[1]
   }
 
-  rethink.connect(opts, function (err, conn) {
-    if (err) {
-      plugin.log(['hapi-rethinkdb', 'error'], err.message);
-      console.error(err);
-      return next(err);
-    }
+  plugin.log(['info', pluginName, 'initializing'], options)
+  rethinkdbInit(r)
 
-    plugin.expose('connection', conn);
-    plugin.expose('library', rethink);
-    plugin.bind({
-      rethinkdbConn: conn,
-      rethinkdb: rethink
-    });
-    
-    plugin.log(['hapi-rethinkdb', 'info'], 'RethinkDB connection established');
-    return next();
-  });
-};
+  const tables = (opts.table ? [opts.table] : opts.tables) || []
+  r.init(options, tables)
+     // fucking promises
+    .then((conn) => {
+      plugin.log(['info', pluginName, 'initializing'], {status: 'connected'})
 
-exports.register.attributes = {
-  pkg: require('./package.json')
-};
+      conn.use(options.db)
+      plugin.expose('conn', conn)
+      plugin.expose('r', r)
+      // plugin.bind({rConn: conn, r})
+      next()
+    })
+    .catch((err) => {
+      plugin.log(['error', pluginName, 'initializing'], err)
+      next(err)
+    })
+}
+
+exports.register.attributes = {name: pluginName, version: pkg.version}
